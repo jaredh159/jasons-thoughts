@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BlogPostPreview from "../components/BlogPostPreview.astro";
+import Footer from "../components/Footer.astro";
+import { getAllPosts } from "../lib/api";
+
+const allPosts = await getAllPosts();
+---
+
+<html lang="en">
+  <head>
+    <BaseHead />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="p-12 border-b">
+      <h1 class="text-3xl text-center bold">Jason's Thoughts</h1>
+    </header>
+    <main class="grow">
+      {allPosts.map((post) => <BlogPostPreview post={post} />)}
+    </main>
+    <Footer />
+  </body>
+</html>

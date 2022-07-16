@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "dist/": true,
+    ".output/": true,
+    "package-lock.json": true,
+    "node_modules/": true
+  }
+}

@@ -1,23 +1,19 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import BlogPostPreview from "../components/BlogPostPreview.astro";
-import Footer from "../components/Footer.astro";
-import { getAllPosts } from "../lib/api";
+import BaseHead from '../components/BaseHead.astro';
+import BlogPostPreview from '../components/BlogPostPreview.astro';
+import NewestBlogPostPreview from '../components/NewestBlogPostPreview.astro';
+import Footer from '../components/Footer.astro';
+import Chrome from '../components/Chrome.astro';
+import { getAllPosts } from '../lib/api';
+import '../styles/sidebar.css';
 
 const allPosts = await getAllPosts();
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead />
-  </head>
-  <body class="flex flex-col min-h-screen">
-    <header class="p-12 border-b">
-      <h1 class="text-3xl text-center bold">Jason's Thoughts</h1>
-    </header>
-    <main class="grow">
-      {allPosts.map((post) => <BlogPostPreview post={post} />)}
-    </main>
-    <Footer />
-  </body>
-</html>
+<Chrome page='/'>
+  <div class='lg:p-10 lg:py-10 py-6 md:px-6 p-0 space-y-8'>
+    {allPosts.map((post, index) =>
+      !index ? <NewestBlogPostPreview post={post} /> : <BlogPostPreview post={post} />,
+    )}
+  </div>
+</Chrome>

@@ -1,5 +1,5 @@
-import type { Post } from "../types";
-import { bucketSlug, readKey } from "./config";
+import type { Post } from '../types';
+import { bucketSlug, readKey } from './config';
 
 export async function getAllPosts(): Promise<Post[]> {
   const endpoint = `https://api.cosmicjs.com/v2/buckets`;

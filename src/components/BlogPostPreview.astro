@@ -1,20 +1,53 @@
 ---
-import type { Post } from "../types";
+import { englishMonths, spanishMonths } from '../lib/dates';
+import type { Post } from '../types';
 
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props as Props;
-const url = "posts/" + post.slug;
+
+const createdAt = new Date(post.created_at);
 ---
 
-<div class="p-12 space-y-4">
-  <a href={url} class="">
-    <h2 class="text-2xl mb-4">{post.title}</h2>
-    <div class="font-serif" set:html={post.content}></div>
-  </a>
-  <p class="italic opacity-80">
-    Posted on {new Date(post.published_at).toLocaleDateString()}
-  </p>
+<div class='shadow-lg md:rounded-2xl bg-white border-t-4 border-t-indigo-500'>
+  <div class='flex flex-col md:flex-row md:items-center md:divide-x'>
+    <a
+      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 rounded-tl-2xl relative flex-grow h-52 overflow-hidden'
+      href={`posts/en/${post.slug}`}
+    >
+      <div
+        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-gray-100 left-0 top-0 rounded-tl-2xl  transition duration-200'
+      >
+      </div>
+      <h1 class='text-2xl font-medium text-gray-900'>{post.title}</h1>
+      <div class='text-gray-600 mt-2' set:html={post.content}></div>
+    </a>
+    <a
+      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 rounded-tr-2xl relative flex-grow h-52 overflow-hidden'
+      href={`posts/es/${post.slug}`}
+    >
+      <div
+        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-gray-100 left-0 top-0 rounded-tr-2xl  transition duration-200'
+      >
+      </div>
+      <h1 class='text-2xl font-medium text-gray-900'>{post.title}</h1>
+      <p class='text-gray-600 mt-2' set:html={post.content}></p>
+    </a>
+  </div>
+  <div
+    class='flex justify-between items-center py-3 px-5 bg-white text-white rounded-b-2xl border-t'
+  >
+    <p class='font-medium text-gray-400 text-lg'>
+      {`${
+        englishMonths[createdAt.getMonth()]
+      } ${createdAt.getDate()}, ${createdAt.getFullYear()}`}
+    </p>
+    <p class='font-medium text-gray-400 text-lg'>
+      {`${createdAt.getDate()} de ${
+        spanishMonths[createdAt.getMonth()]
+      }, ${createdAt.getFullYear()}`}
+    </p>
+  </div>
 </div>

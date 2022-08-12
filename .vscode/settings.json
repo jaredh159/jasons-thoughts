@@ -4,5 +4,8 @@
     ".output/": true,
     "package-lock.json": true,
     "node_modules/": true
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

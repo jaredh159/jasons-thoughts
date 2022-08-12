@@ -9,5 +9,5 @@ export type Post = {
   created_by: string;
   modified_at: string;
   published_at: string;
-  type: "posts";
+  type: 'posts';
 };

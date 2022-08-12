@@ -1,0 +1,18 @@
+@media (min-width: 1024px) {
+  .sidebar {
+    transition: 200ms;
+  }
+  
+  .rest {
+    transition: 200ms;
+  }
+  
+  
+  #nav-toggle:checked ~ .sidebar {
+    margin-left: -288px;
+  }
+  
+  #nav-toggle:checked ~ .rest {
+    margin-left: 0px;
+  }
+}

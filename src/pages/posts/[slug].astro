@@ -1,0 +1,41 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import EmbeddedAudio from '../../components/EmbeddedAudio.astro';
+import { getAllPosts } from '../../lib/api';
+import { Post } from '../../types';
+import '../../styles/footnotes.css';
+
+export async function getStaticPaths() {
+  const allDualPosts = await getAllPosts();
+  const mixedPosts = allDualPosts.flatMap((dual) => [dual.en, dual.es]);
+  return mixedPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: Post<'es'> };
+---
+
+<html lang={post.lang}>
+  <head>
+    <BaseHead />
+  </head>
+  <body class='flex flex-col items-center'>
+    <div class='flex flex-col min-h-screen p-8 prose'>
+      <header class='border-b mb-2 flex justify-start items-center'>
+        <h1 class='text-3xl bold'>{post.title}</h1>
+      </header>
+      <main class='grow'>
+        <div class='text-justify mb-8' set:html={post.content}></div>
+        <EmbeddedAudio
+          trackId={post.soundcloudId}
+          lang={post.lang}
+          title={post.title}
+        />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

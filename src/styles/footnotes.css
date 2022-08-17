@@ -1,0 +1,21 @@
+a[name=sdfootnote1sym] {
+  margin-top: 40px;
+}
+
+a[name^=sdfootnote] {
+  color: blue;
+  font-weight: bold;
+}
+a[name$=sym] {
+  padding-right: 0.25em;
+  color: blue;
+  font-size: 0.75em;
+  transform: translateY(-8px);
+  display: inline-block;
+  text-decoration: none;
+}
+
+p:has(a[name$=sym]) {
+  font-size: 5px;
+  color: red;
+}

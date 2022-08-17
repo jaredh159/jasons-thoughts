@@ -1,9 +1,9 @@
 ---
-import type { Post } from '../types';
-import Swans from '../public/swans.jpg';
+import striptags from 'striptags';
+import type { DualPost } from '../types';
 
 export interface Props {
-  post: Post;
+  post: DualPost;
 }
 
 const { post } = Astro.props as Props;
@@ -12,12 +12,12 @@ const { post } = Astro.props as Props;
 <div class='md:rounded-2xl shadow-xl bg-white'>
   <div class='flex'>
     <div class='m-6 md:m-10 md:divide-x-2 flex flex-col md:flex-row'>
-      <div class='p-4 pr-8'>
-        <h1 class='font-lato text-3xl'>{post.title}</h1>
+      <div class='p-4 pr-8 w-1/2'>
+        <h1 class='font-lato text-3xl'>{post.en.title}</h1>
         <div
           class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'
-          set:html={post.content}
         >
+          <div set:html={striptags(post.en.content).substring(0, 400)}></div>
           <div
             class='absolute w-full h-full left-0 top-0 bg-gradient-to-b from-transparent to-white'
           >
@@ -25,16 +25,16 @@ const { post } = Astro.props as Props;
         </div>
         <a
           class='px-7 py-3 bg-indigo-800 transition rounded-lg text-white font-medium shadow hover:bg-indigo-700 cursor-pointer'
-          href={`/posts/en/${post.slug}`}
+          href={`/posts/${post.en.slug}`}
           >Read post &rarr;
         </a>
       </div>
-      <div class='p-4 pl-8'>
-        <h1 class='font-lato text-3xl'>{post.title}</h1>
+      <div class='p-4 pl-8 w-1/2'>
+        <h1 class='font-lato text-3xl'>{post.es.title}</h1>
         <div
           class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'
-          set:html={post.content}
         >
+          <div set:html={striptags(post.es.content).substring(0, 400)}></div>
           <div
             class='absolute w-full h-full left-0 top-0 bg-gradient-to-b from-transparent to-white'
           >
@@ -42,7 +42,7 @@ const { post } = Astro.props as Props;
         </div>
         <a
           class='px-7 py-3 bg-indigo-800 transition rounded-lg text-white font-medium shadow hover:bg-indigo-700 cursor-pointer'
-          href={`/posts/en/${post.slug}`}
+          href={`/posts/${post.es.slug}`}
           >Read post &rarr;
         </a>
       </div>

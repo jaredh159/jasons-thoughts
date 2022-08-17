@@ -12,7 +12,6 @@ const allPosts = await getAllPosts();
 
 <Chrome page='/'>
   <div class='lg:p-10 lg:py-10 py-6 md:px-6 p-0 space-y-8'>
-    <h1>{import.meta.env.MODE}</h1>
     {allPosts.map((post, index) =>
       !index ? (
         <NewestBlogPostPreview post={post} />

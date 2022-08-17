@@ -13,31 +13,31 @@ const { post } = Astro.props as Props;
 <div class='shadow-lg md:rounded-2xl bg-white border-t-4 border-t-indigo-500'>
   <div class='flex flex-col md:flex-row md:items-center md:divide-x'>
     <a
-      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 rounded-tl-2xl relative flex-grow h-52 overflow-hidden w-1/2'
+      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 md:rounded-tl-2xl relative flex-grow h-52 overflow-hidden md:w-1/2'
       href={`posts/${post.en.slug}`}
     >
       <div
-        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-gray-100 left-0 top-0 rounded-tl-2xl  transition duration-200'
+        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-white md:to-gray-100  left-0 top-0 rounded-tl-2xl  transition duration-200'
       >
       </div>
-      <h1 class='text-2xl font-medium text-gray-900'>{post.en.title}</h1>
+      <h1 class='text-2xl font-bold text-gray-900'>{post.en.title}</h1>
       <p
-        class='text-gray-600 mt-2'
+        class='text-gray-500 text-lg mt-2'
         set:html={striptags(post.en.content).substring(0, 400)}
       >
       </p>
     </a>
     <a
-      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 rounded-tr-2xl relative flex-grow h-52 overflow-hidden w-1/2'
+      class='p-7 hover:bg-indigo-50 cursor-pointer transition duration-100 md:rounded-tr-2xl relative flex-grow h-52 overflow-hidden md:w-1/2'
       href={`posts/${post.es.slug}`}
     >
       <div
-        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-gray-100 left-0 top-0 rounded-tr-2xl  transition duration-200'
+        class='w-full h-full absolute bg-gradient-to-b from-transparent via-transparent to-white md:to-gray-100 left-0 top-0 rounded-tr-2xl  transition duration-200'
       >
       </div>
-      <h1 class='text-2xl font-medium text-gray-900'>{post.es.title}</h1>
+      <h1 class='text-2xl font-bold text-gray-900'>{post.es.title}</h1>
       <p
-        class='text-gray-600 mt-2'
+        class='text-gray-500 text-lg mt-2'
         set:html={striptags(post.es.content).substring(0, 400)}
       >
       </p>

@@ -19,7 +19,9 @@ const { page } = Astro.props as Props;
     >
       <div class='flex justify-start items-center ml-16'>
         <div class=''>
-          <h1 class='text-3xl font-medium text-gray-400'>Jason's Thoughts</h1>
+          <h1 class='text-3xl font-medium text-gray-400 -ml-16 lg:-ml-0'>
+            Jason's Thoughts
+          </h1>
           <p class='text-gray-600 italic mt-1 hidden lg:block'>
             While you have the light, believe in the light, that you may become sons of
             light.
@@ -29,11 +31,11 @@ const { page } = Astro.props as Props;
     </header>
     <div class='min-h-screen'>
       <label
-        class='fa fa-bars mr-6 text-gray-600 text-3xl hover:text-gray-500 cursor-pointer transition duration-100 p-4 -ml-4 absolute top-2 lg:top-5 left-8'
+        class='fa fa-bars mr-6 text-gray-600 text-3xl hover:text-gray-500 cursor-pointer transition duration-100 p-4 lg:-ml-4 absolute top-2 lg:top-5 left-8 -ml-40'
         for='nav-toggle'></label>
       <input type='checkbox' id='nav-toggle' class='hidden' />
       <nav
-        class='sticky bg-gray-900 lg:bg-transparent top-0 lg:h-screen lg:p-10 lg:py-12 sidebar lg:w-72 flex flex-row lg:flex-col justify-center lg:justify-start py-7 z-50 shadow-xl lg:shadow-none flex-wrap'
+        class='sticky bg-gray-900 bg-opacity-95 lg:bg-transparent top-0 lg:h-screen lg:p-10 lg:py-12 sidebar lg:w-72 flex flex-row lg:flex-col justify-center lg:justify-start py-7 z-50 shadow-xl lg:shadow-none flex-wrap'
       >
         <SidebarLink page={page} to='/'>Posts</SidebarLink>
         <SidebarLink page={page} to='/about'>About</SidebarLink>

@@ -22,18 +22,20 @@ const { post } = Astro.props as { post: Post<'es'> };
   <head>
     <BaseHead />
   </head>
-  <body class='flex flex-col items-center'>
-    <div class='flex flex-col min-h-screen p-8 prose'>
-      <header class='border-b mb-2 flex justify-start items-center'>
+  <body class='flex flex-col items-center relative'>
+    <a
+      class='absolute left-3 top-3 w-12 h-12 hover:bg-gray-100 cursor-pointer transition duration-100 flex justify-center items-center rounded-full text-gray-500 hover:text-gray-600'
+      href='/'
+    >
+      <i class='fa fa-arrow-left text-xl'></i>
+    </a>
+    <div class='flex flex-col min-h-screen p-8 prose mt-10 md:mt-0'>
+      <header class=' mb-2 flex justify-start items-center'>
         <h1 class='text-3xl bold'>{post.title}</h1>
       </header>
       <main class='grow'>
+        <EmbeddedAudio trackId={post.soundcloudId} lang={post.lang} title={post.title} />
         <div class='text-justify mb-8' set:html={post.content}></div>
-        <EmbeddedAudio
-          trackId={post.soundcloudId}
-          lang={post.lang}
-          title={post.title}
-        />
       </main>
       <Footer />
     </div>

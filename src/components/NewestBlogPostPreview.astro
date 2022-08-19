@@ -14,7 +14,9 @@ const { post } = Astro.props as Props;
     <div class='m-6 md:m-10 md:divide-x-2 flex flex-col md:flex-row'>
       <div class='p-4 pr-8 md:w-1/2 mb-5 md:mb-0'>
         <h1 class='font-lato text-3xl'>{post.en.title}</h1>
-        <div class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'>
+        <div
+          class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'
+        >
           <div set:html={striptags(post.en.content).substring(0, 400)}></div>
           <div
             class='absolute w-full h-full left-0 top-0 bg-gradient-to-b from-transparent to-white'
@@ -24,12 +26,14 @@ const { post } = Astro.props as Props;
         <a
           class='px-7 py-3 bg-indigo-800 transition rounded-lg text-white font-medium shadow hover:bg-indigo-700 cursor-pointer'
           href={`/posts/${post.en.slug}`}
-          >Read post &rarr;
+          >Read / Listen &rarr;
         </a>
       </div>
       <div class='p-4 md:pl-8 md:w-1/2'>
         <h1 class='font-lato text-3xl'>{post.es.title}</h1>
-        <div class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'>
+        <div
+          class='mt-4 mb-6 text-lg text-gray-500 h-32 overflow-hidden relative'
+        >
           <div set:html={striptags(post.es.content).substring(0, 400)}></div>
           <div
             class='absolute w-full h-full left-0 top-0 bg-gradient-to-b from-transparent to-white'
@@ -39,7 +43,7 @@ const { post } = Astro.props as Props;
         <a
           class='px-7 py-3 bg-indigo-800 transition rounded-lg text-white font-medium shadow hover:bg-indigo-700 cursor-pointer'
           href={`/posts/${post.es.slug}`}
-          >Leer postito &rarr;
+          >Leer / Escuchar &rarr;
         </a>
       </div>
     </div>

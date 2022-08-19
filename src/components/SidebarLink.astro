@@ -1,18 +1,18 @@
 ---
 export interface Props {
   to: string;
-  page: string;
+  selected?: boolean;
+  className?: string;
 }
 
-const { to, page } = Astro.props as Props;
-const selected = page === to;
+const { selected, to, className } = Astro.props as Props;
 ---
 
 <a
   href={to}
-  class={`text-xl text-white font-medium mx-3 lg:mx-0 lg:mb-5 block py-1 lg:py-0 ${
-    selected ? 'text-opacity-800' : 'text-opacity-50 hover:text-opacity-60'
-  }`}
+  class={`text-xl text-white font-medium mx-3 lg:mx-0 py-1 lg:py-0 ${
+    selected ? 'text-opacity-800' : 'text-opacity-50 hover:text-opacity-80'
+  } ${className ?? ``}`}
 >
   <slot></slot>
 </a>

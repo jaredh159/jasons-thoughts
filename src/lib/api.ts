@@ -3,7 +3,7 @@ import { bucketSlug, readKey } from './config';
 
 export async function getAllPosts(): Promise<DualPost[]> {
   const endpoint = `https://api.cosmicjs.com/v2/buckets`;
-  const type = import.meta.env.MODE === 'development' ? 'test-posts' : 'posts';
+  const type = import.meta.env.MODE === 'development' ? 'posts' : 'posts';
   const query = encodeURIComponent(`{"type":"${type}"}`);
   const url = `${endpoint}/${bucketSlug}/objects?&query=${query}&read_key=${readKey}`;
   const response = await fetch(url);

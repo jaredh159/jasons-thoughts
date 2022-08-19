@@ -15,12 +15,17 @@ const { page } = Astro.props as Props;
   </head>
   <body class='bg-gray-900 bg-gradient-to-b from-transparent to-indigo-500/20 bg-fixed'>
     <header
-      class='px-8 py-5 bg-gray-900 border-b border-b-gray-700 flex justify-between items-center'
+      class='px-8 py-5 bg-gray-900 border-b border-b-gray-700 flex justify-between items-center relative'
     >
-      <div class='flex justify-start items-center ml-16'>
+      <pre class='absolute right-1 top-1 font-mono text-gray-700'>v1.0</pre>
+      <div class='
+        flex
+        justify-start
+        items-center
+        ml-16'>
         <div class=''>
           <h1 class='text-3xl font-medium text-gray-400 -ml-16 lg:-ml-0'>
-            Jason's Thoughts
+            Jason's Thought's
           </h1>
           <p class='text-gray-600 italic mt-1 hidden lg:block'>
             While you have the light, believe in the light, that you may become sons of
@@ -37,9 +42,9 @@ const { page } = Astro.props as Props;
       <nav
         class='sticky bg-gray-900 bg-opacity-95 lg:bg-transparent top-0 lg:h-screen lg:p-10 lg:py-12 sidebar lg:w-72 flex flex-row lg:flex-col justify-center lg:justify-start py-7 z-50 shadow-xl lg:shadow-none flex-wrap'
       >
-        <SidebarLink page={page} to='/'>Posts</SidebarLink>
-        <SidebarLink page={page} to='/about'>About</SidebarLink>
-        <SidebarLink page={page} to='/contact'>Contact me</SidebarLink>
+        <SidebarLink page={page} to='/'>Posts / Entradas</SidebarLink>
+        <SidebarLink page={page} to='/about'>About / Sobre</SidebarLink>
+        <SidebarLink page={page} to='/contact'>Contact me / Contacto</SidebarLink>
         <SidebarLink page={page} to='https://friendslibrary.com'
           >Friends Library
         </SidebarLink>

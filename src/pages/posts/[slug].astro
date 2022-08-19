@@ -34,8 +34,12 @@ const { post } = Astro.props as { post: Post<'es'> };
         <h1 class='text-3xl bold'>{post.title}</h1>
       </header>
       <main class='grow'>
-        <EmbeddedAudio trackId={post.soundcloudId} lang={post.lang} title={post.title} />
-        <div class='text-justify mb-8' set:html={post.content}></div>
+        <EmbeddedAudio
+          trackId={post.soundcloudId}
+          lang={post.lang}
+          title={post.title}
+        />
+        <div class='mb-8' set:html={post.content}></div>
       </main>
     </div>
   </body>

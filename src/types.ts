@@ -8,10 +8,16 @@ export type ApiPost = {
   published_at: string;
   metadata: {
     soundcloud_id: number;
+    mp3_url: string;
+    audio_size: number;
+    audio_duration: number;
     spanish_title: string;
     spanish_slug: string;
     spanish_content: string;
     spanish_soundcloud_id: number;
+    spanish_mp3_url: string;
+    spanish_audio_size: number;
+    spanish_audio_duration: number;
   };
 };
 
@@ -23,6 +29,9 @@ export type Post<L extends Lang> = {
   title: string;
   content: string;
   soundcloudId: number;
+  mp3Url: string;
+  audioSize: number;
+  audioDuration: number;
   lang: L;
   createdAt: Date;
   modifiedAt: Date;

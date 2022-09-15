@@ -60,16 +60,12 @@ const { page } = Astro.props as Props;
             >Acerca de mí
           </SidebarLink>
         </div>
-        <!-- <div class='flex items-center'>
-          <span
-            class='text-xl text-white/30 lg:pr-2 font-medium ml-3 lg:ml-0 py-1 lg:py-0'
-          >
-            Podcast:
-          </span>
-          <SidebarLink to='/podcast.en.rss'>English</SidebarLink>
-          <span class='text-white/50 text-xl -ml-1.5 -mr-1.5 lg:mx-1.5'>/</span>
-          <SidebarLink to='/podcast.es.rss'>Espanol</SidebarLink>
-        </div> -->
+        <SidebarLink to='/podcast' selected={page === `/podcast`}>
+          <i
+            class={`fas fa-podcast text-[19px] pr-1 mr-2${
+              page === `/podcast` ? `text-white` : `text-gray-500`
+            }`}></i> Podcast
+        </SidebarLink>
         <SidebarLink to='https://friendslibrary.com'
           >Friends Library
         </SidebarLink>

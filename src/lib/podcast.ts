@@ -10,10 +10,9 @@ export function podcastXml(posts: Array<Post<Lang>>): string {
   return `
   <?xml version="1.0" encoding="UTF-8"?>
   <rss
-    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-    xmlns:atom="http://www.w3.org/2005/Atom"
     version="2.0"
-  >
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/“>
     <channel>
       <atom:link
         href="${import.meta.env.SITE}podcast.${lang}.rss"
@@ -21,7 +20,7 @@ export function podcastXml(posts: Array<Post<Lang>>): string {
         type="application/rss+xml"
       />
       <title>hender.blog</title>
-      <link>${import.meta.env.SITE}podcast.${lang}.rss</link>
+      <link>${import.meta.env.SITE}</link>
       <language>en</language>
       <itunes:author>Jason Henderson</itunes:author>
       <itunes:subtitle>${description}</itunes:subtitle>
@@ -37,7 +36,7 @@ export function podcastXml(posts: Array<Post<Lang>>): string {
       <image>
         <url>https://flp-assets.nyc3.digitaloceanspaces.com/static/henderblog.jpg</url>
         <title>hender.blog</title>
-        <link>${import.meta.env.SITE}podcast.${lang}.rss</link>
+        <link>${import.meta.env.SITE}</link>
       </image>
       <itunes:category text="Religion &amp; Spirituality">
         <itunes:category text="Christianity" />

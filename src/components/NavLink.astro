@@ -10,9 +10,9 @@ const { selected, to, className } = Astro.props as Props;
 
 <a
   href={to}
-  class={`text-xl text-white font-medium mx-3 lg:mx-0 py-1 lg:py-0 ${
-    selected ? 'text-opacity-800' : 'text-opacity-50 hover:text-opacity-80'
-  } ${className ?? ``}`}
+  class={`${
+    selected ? 'text-gray-600' : 'text-gray-400'
+  } hover:text-sky-400 transition duration-100 select-none`}
 >
   <slot></slot>
 </a>

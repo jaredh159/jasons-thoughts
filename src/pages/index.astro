@@ -1,7 +1,7 @@
 ---
-import BlogPostPreview from '../components/BlogPostPreview.astro';
-import NewestBlogPostPreview from '../components/NewestBlogPostPreview.astro';
 import Chrome from '../components/Chrome.astro';
+import Hero from '../components/Hero.astro';
+import RecentPostsBlock from '../components/RecentPostsBlock.astro';
 import { getAllPosts } from '../lib/api';
 import '../styles/sidebar.css';
 
@@ -9,9 +9,14 @@ const allPosts = await getAllPosts();
 ---
 
 <Chrome page='/'>
+  <Hero />
+  <RecentPostsBlock />
+</Chrome>
+
+<!-- <Chrome page='/'>
   <div class='lg:p-10 lg:py-10 py-6 md:px-6 p-0 space-y-8'>
     {allPosts.map((post, index) =>
       !index ? <NewestBlogPostPreview post={post} /> : <BlogPostPreview post={post} />,
     )}
   </div>
-</Chrome>
+</Chrome> -->

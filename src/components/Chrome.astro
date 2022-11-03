@@ -2,6 +2,8 @@
 import BaseHead from './BaseHead.astro';
 import NavLink from './NavLink.astro';
 import ProfilePic from '../public/profile.jpg';
+import Footer from './Footer.astro';
+import FloatingNav from './FloatingNav.astro';
 
 interface Props {
   page: string;
@@ -15,20 +17,16 @@ const { page } = Astro.props as Props;
     <BaseHead />
   </head>
   <body class='flex flex-col min-h-screen'>
-    <header class='flex justify-between items-center py-5 px-10'>
+    <header
+      class='flex justify-between items-center py-5 px-10 top-0 z-40 backdrop-blur bg-white bg-opacity-20'
+    >
       <img src={ProfilePic} class='w-12 h-12 rounded-full shadow-lg' />
-      <div class='border flex shadow-md rounded-full py-2 px-8 space-x-5'>
-        <NavLink to='/' selected={page === '/'}>Home</NavLink>
-        <NavLink to='/posts' selected={page === '/posts'}>Posts</NavLink>
-        <NavLink to='/teachings' selected={page === '/teachings'}>Teachings</NavLink>
-        <NavLink to='/about-me' selected={page === '/about-me'}>About me</NavLink>
-        <NavLink to='/contact' selected={page === '/contact'}>Contact</NavLink>
-      </div>
+      <FloatingNav page={page} />
       <div class='w-10'></div>
     </header>
     <section class='flex-grow'>
       <slot></slot>
     </section>
-    <footer class='px-10 py-6 flex justify-center items-center'>footer</footer>
+    <Footer page={page} />
   </body>
 </html>

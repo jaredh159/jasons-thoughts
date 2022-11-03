@@ -1,8 +1,33 @@
 ---
+import FloatingNav from './FloatingNav.astro';
+
+interface Props {
+  page: string;
+}
+
+const { page } = Astro.props as Props;
 ---
 
-<footer class="p-5 border-t flex items-center justify-center">
-  <p class="text-gray-500">
-    &copy; {new Date().getFullYear()} Market Street Fellowship Enterprises LLC.
-  </p>
-</footer>
+<section class='relative overflow-hidden'>
+  <section class='bg-white h-80 flex justify-center items-center relative'>
+    <i class='fa-solid fa-quote-left text-7xl text-gray-200 absolute left-8 top-8'></i>
+    <i class='fa-solid fa-quote-right text-7xl text-gray-200 absolute bottom-8 right-8'
+    ></i>
+    <p class='max-w-2xl text-center text-2xl font-extralight relative z-10 text-gray-700'>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, laudantium cumque
+      quidem voluptas molestiae nobis exercitationem, quos suscipit ipsum quasi velit
+      atque.
+    </p>
+  </section>
+  <footer class='px-10 py-6 flex justify-center items-center relative'>
+    <div
+      class='w-96 h-96 bg-sky-300 rounded-2xl absolute left-56 -bottom-52 rotate-45 bg-opacity-50'
+    >
+    </div>
+    <div
+      class='w-96 h-96 bg-sky-500 rounded-2xl absolute left-20 -bottom-72 rotate-45 bg-opacity-50'
+    >
+    </div>
+    <FloatingNav page={page} />
+  </footer>
+</section>

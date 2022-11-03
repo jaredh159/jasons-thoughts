@@ -10,13 +10,5 @@ const allPosts = await getAllPosts();
 
 <Chrome page='/'>
   <Hero />
-  <RecentPostsBlock />
+  <RecentPostsBlock posts={allPosts} />
 </Chrome>
-
-<!-- <Chrome page='/'>
-  <div class='lg:p-10 lg:py-10 py-6 md:px-6 p-0 space-y-8'>
-    {allPosts.map((post, index) =>
-      !index ? <NewestBlogPostPreview post={post} /> : <BlogPostPreview post={post} />,
-    )}
-  </div>
-</Chrome> -->

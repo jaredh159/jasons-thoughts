@@ -1,0 +1,19 @@
+---
+import NavLink from './NavLink.astro';
+
+interface Props {
+  page: string;
+}
+
+const { page } = Astro.props as Props;
+---
+
+<nav
+  class='border flex shadow-md rounded-full py-2 px-8 space-x-5 bg-white relative z-20'
+>
+  <NavLink to='/' selected={page === '/'}>Home</NavLink>
+  <NavLink to='/posts' selected={page === '/posts'}>Posts</NavLink>
+  <NavLink to='/teachings' selected={page === '/teachings'}>Teachings</NavLink>
+  <NavLink to='/about-me' selected={page === '/about-me'}>About me</NavLink>
+  <NavLink to='/contact' selected={page === '/contact'}>Contact</NavLink>
+</nav>

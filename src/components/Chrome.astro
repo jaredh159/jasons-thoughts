@@ -6,9 +6,10 @@ import FloatingNav from './FloatingNav.astro';
 
 interface Props {
   page: string;
+  smallFooter?: boolean;
 }
 
-const { page } = Astro.props as Props;
+const { page, smallFooter = false } = Astro.props as Props;
 ---
 
 <html lang='en'>
@@ -23,9 +24,9 @@ const { page } = Astro.props as Props;
       <FloatingNav page={page} />
       <div class='w-10 hidden md:block'></div>
     </header>
-    <section class='flex-grow'>
+    <section class='flex-grow flex flex-col'>
       <slot></slot>
     </section>
-    <Footer page={page} />
+    <Footer page={page} small={smallFooter} />
   </body>
 </html>

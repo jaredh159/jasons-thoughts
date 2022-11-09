@@ -1,9 +1,9 @@
 ---
 import { DualPost } from '../types';
 import Advertisement from './Advertisement.astro';
-import BlogPostPreview from './BlogPostPreview.astro';
 import FriendsLibraryLogo from '../public/friends-library-logo.png';
 import GertrudeLogo from '../public/gertrude-logo.png';
+import HomePagePostPreview from './HomePagePostPreview.astro';
 
 interface Props {
   posts: DualPost[];
@@ -12,11 +12,11 @@ interface Props {
 const { posts } = Astro.props as Props;
 ---
 
-<section class='bg-sky-600 flex flex-col lg:flex-row pt-8 p-6 xs:p-8 md:p-12 lg:p-16'>
+<section class='bg-sky-500 flex flex-col lg:flex-row pt-8 p-6 xs:p-8 md:p-12 lg:p-16'>
   <div class='flex-grow'>
     <h1 class='text-3xl sm:text-4xl text-white font-inter'>Recent posts</h1>
     <div class='mt-6 sm:mt-8 space-y-6 flex flex-col'>
-      {posts.slice(0, 3).map((post) => <BlogPostPreview post={post} />)}
+      {posts.slice(0, 3).map((post) => <HomePagePostPreview post={post} />)}
     </div>
   </div>
   <div

@@ -37,6 +37,7 @@ export function relativeTime(isoOrDate: Date | string): string {
   const UNITS = {
     year: 24 * 60 * 60 * 1000 * 365,
     month: (24 * 60 * 60 * 1000 * 365) / 12,
+    week: 24 * 60 * 60 * 1000 * 7,
     day: 24 * 60 * 60 * 1000,
     hour: 60 * 60 * 1000,
     minute: 60 * 1000,

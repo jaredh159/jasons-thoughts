@@ -1,0 +1,15 @@
+---
+import striptags from 'striptags';
+import Chrome from '../../components/Chrome.astro';
+import { englishMonths } from '../../lib/dates';
+import { getAllPosts } from '../../lib/api';
+import PostPreview from '../../components/PostPreview.astro';
+
+const allPosts = await getAllPosts();
+---
+
+<Chrome page='/posts'>
+  <section class='p-16 space-y-8'>
+    {allPosts.map((post) => <PostPreview post={post} />)}
+  </section>
+</Chrome>

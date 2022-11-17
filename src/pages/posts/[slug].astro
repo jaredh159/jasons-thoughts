@@ -23,7 +23,9 @@ const { post } = Astro.props as { post: Post<'es'> };
   <head>
     <BaseHead />
   </head>
-  <body class='flex flex-col items-center relative bg-graph-paper overflow-x-hidden'>
+  <body
+    class='flex flex-col items-center justify-center bg-graph-paper overflow-x-hidden'
+  >
     <div class='w-176 h-176 absolute -left-96 top-128 sky-cloud'></div>
     <div class='w-176 h-176 absolute -left-128 top-60 sky-cloud'></div>
     <div class='w-176 h-176 absolute -right-128 top-176 sky-cloud'></div>

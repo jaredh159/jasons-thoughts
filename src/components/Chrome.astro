@@ -1,6 +1,6 @@
 ---
 import BaseHead from './BaseHead.astro';
-import ProfilePic from '../public/profile.jpg';
+import ProfilePic from '/public/profile.jpg';
 import Footer from './Footer.astro';
 import FloatingNav from './FloatingNav.astro';
 
@@ -12,20 +12,20 @@ interface Props {
 const { page, smallFooter = false } = Astro.props as Props;
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
     <BaseHead />
   </head>
-  <body class='flex flex-col min-h-screen relative'>
+  <body class="flex flex-col min-h-screen relative">
     <header
-      class='flex justify-center sm:justify-between items-center py-5 px-5 sm:px-10 top-0 z-40 backdrop-blur bg-white bg-opacity-20'
+      class="flex justify-center sm:justify-between items-center py-5 px-5 sm:px-10 top-0 z-40 backdrop-blur bg-white bg-opacity-20"
     >
-      <img src={ProfilePic} class='w-12 h-12 rounded-full shadow-lg hidden sm:block' />
+      <img src={ProfilePic} class="w-12 h-12 rounded-full shadow-lg hidden sm:block" />
       <FloatingNav page={page} />
-      <div class='w-10 hidden md:block'></div>
+      <div class="w-10 hidden md:block"></div>
     </header>
-    <section class='flex-grow flex flex-col'>
-      <slot></slot>
+    <section class="flex-grow flex flex-col">
+      <slot />
     </section>
     <Footer page={page} small={smallFooter} />
   </body>

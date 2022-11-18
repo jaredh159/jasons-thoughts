@@ -1,81 +1,32 @@
 ---
 import BaseHead from './BaseHead.astro';
-import SidebarLink from './SidebarLink.astro';
+import ProfilePic from '/profile.jpg';
+import Footer from './Footer.astro';
+import FloatingNav from './FloatingNav.astro';
 
 interface Props {
   page: string;
+  smallFooter?: boolean;
 }
 
-const { page } = Astro.props as Props;
+const { page, smallFooter = false } = Astro.props as Props;
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
     <BaseHead />
   </head>
-  <body
-    class='bg-gray-900 bg-gradient-to-b from-transparent to-indigo-500/20 bg-fixed'
-  >
+  <body class="flex flex-col min-h-screen relative">
     <header
-      class='px-8 py-5 bg-gray-900 border-b border-b-gray-700 flex justify-between items-center relative'
+      class="flex justify-center sm:justify-between items-center py-5 px-5 sm:px-10 top-0 z-40 backdrop-blur bg-white bg-opacity-20"
     >
-      <div class='flex justify-start items-center ml-16'>
-        <div class=''>
-          <h1
-            class='text-center md:text-left text-3xl font-medium text-gray-400 -ml-16 lg:-ml-0'
-          >
-            Jason Henderson&rsquo;s Blog
-          </h1>
-          <p class='text-gray-600 italic mt-3 hidden lg:block'>
-            While you have the light, believe in the light, that you may become
-            sons of light.
-          </p>
-          <p class='text-gray-600 italic mt-0 hidden lg:block'>
-            Entre tanto que tenéis la luz, creed en la luz, para que seáis hijos
-            de luz.
-          </p>
-        </div>
-      </div>
+      <img src={ProfilePic} class="w-12 h-12 rounded-full shadow-lg hidden sm:block" />
+      <FloatingNav page={page} />
+      <div class="w-10 hidden md:block"></div>
     </header>
-    <div class='min-h-screen'>
-      <label
-        class='fa fa-bars mr-6 text-gray-500 text-4xl hover:text-gray-300 cursor-pointer transition duration-100 p-4 lg:-ml-4 absolute top-2 lg:top-2 left-8 -ml-40'
-        for='nav-toggle'></label>
-      <input type='checkbox' id='nav-toggle' class='hidden' />
-      <nav
-        class='bg-gray-900 bg-opacity-95 lg:bg-transparent top-0 lg:h-screen lg:p-10 lg:py-12 sidebar lg:w-72 flex flex-row lg:flex-col justify-center lg:justify-start py-7 z-50 shadow-xl lg:shadow-none flex-wrap lg:space-y-5 px-8'
-      >
-        <SidebarLink selected={page === `/`} to='/'
-          >Posts / Publicaciones
-        </SidebarLink>
-        <SidebarLink selected={page === `/contact`} to='/contact'
-          >Contact me / Contacto
-        </SidebarLink>
-        <div class='flex items-center'>
-          <SidebarLink selected={page === '/about'} to='/about'
-            >About
-          </SidebarLink>
-          <span class='text-white/50 text-xl -ml-1.5 -mr-1.5 lg:mx-1.5'>/</span>
-          <SidebarLink selected={page === `/acerca-de-mi`} to='/acerca-de-mi'
-            >Acerca de mí
-          </SidebarLink>
-        </div>
-        <SidebarLink to='/podcast' selected={page === `/podcast`}>
-          <i
-            class={`fas fa-podcast text-[19px] pr-1 mr-2${
-              page === `/podcast` ? `text-white` : `text-gray-500`
-            }`}></i> Podcast
-        </SidebarLink>
-        <SidebarLink to='https://friendslibrary.com'
-          >Friends Library
-        </SidebarLink>
-        <SidebarLink to='https://www.bibliotecadelosamigos.org'
-          >Biblioteca de los Amigos
-        </SidebarLink>
-      </nav>
-      <div class='flex-grow lg:-mt-[100vh] rest lg:ml-72'>
-        <slot></slot>
-      </div>
-    </div>
+    <section class="flex-grow flex flex-col">
+      <slot />
+    </section>
+    <Footer page={page} small={smallFooter} />
   </body>
 </html>

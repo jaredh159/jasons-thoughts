@@ -1,23 +1,26 @@
 {
-  "name": "@example/basics",
-  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^1.0.0",
-    "@tailwindcss/typography": "^0.5.4",
-    "@types/node": "^18.0.5",
-    "astro": "^1.1.5",
+    "@tailwindcss/typography": "^0.5.8",
+    "@types/node": "18.11.3",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
+    "autoprefixer": "^10.4.12",
     "classnames": "^2.3.2",
-    "dotenv": "^16.0.1",
-    "nanostores": "^0.7.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.1.1",
-    "striptags": "^3.2.0"
+    "dotenv": "^16.0.3",
+    "postcss": "^8.4.18",
+    "striptags": "^3.2.0",
+    "tailwindcss": "^3.2.4",
+    "typescript": "4.8.4"
   }
 }

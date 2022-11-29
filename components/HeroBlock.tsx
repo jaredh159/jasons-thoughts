@@ -8,7 +8,7 @@ const HeroBlock: React.FC = () => {
       <h1 className="text-3xl xs:text-4xl md:text-6xl font-inter relative">
         The Ancient Path
       </h1>
-      <p className="mt-4 text-black text-opacity-50 max-w-4xl xs:text-lg font-light relative">
+      <p className="mt-6 text-black text-opacity-50 max-w-4xl xs:text-lg relative">
         Stand by the ways and see and ask for the ancient paths, where the good way is,
         and walk in it; and you will find rest for your souls. But they said, 'We will not
         walk in it.' - <span className="font-medium">Jeremiah 6:16</span>

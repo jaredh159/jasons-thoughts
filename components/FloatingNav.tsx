@@ -9,7 +9,7 @@ interface Props {
 
 const FloatingNav: React.FC<Props> = ({ page, className }) => {
   return (
-    <div className="hidden xs:block">
+    <div className="hidden sm:block">
       <nav
         className={cx(
           `border-[0.5px] shadow-lg rounded-full py-1 px-8 bg-white relative z-20 flex flex-wrap justify-center`,
@@ -21,6 +21,9 @@ const FloatingNav: React.FC<Props> = ({ page, className }) => {
         </NavLink>
         <NavLink to="/posts" selected={page === '/posts'}>
           Posts
+        </NavLink>
+        <NavLink to="/podcast" selected={page === '/podcast'}>
+          Podcast
         </NavLink>
         <NavLink to="/about" selected={page === '/about'}>
           About me

@@ -45,6 +45,12 @@ const LanguageToggler: React.FC<Props> = ({ language, setLanguage, className, pa
           case '/acerca-de-mi':
             router.push('/about');
             break;
+          case '/en-podcast':
+            router.push('/es-podcast');
+            break;
+          case '/es-podcast':
+            router.push('/en-podcast');
+            break;
         }
       }}
     >

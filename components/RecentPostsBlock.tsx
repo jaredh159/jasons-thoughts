@@ -3,6 +3,7 @@ import { DualPost } from '../lib/types';
 import Advertisement from './Advertisement';
 import HomePagePostPreview from './HomePagePostPreview';
 import FriendsLibraryLogo from '../public/friends-library-logo.png';
+import BibliotecaDeLosAmigosLogo from '../public/biblioteca-de-los-amigos-logo.png';
 import GertrudeLogo from '../public/gertrude-logo.png';
 import { LanguageContext } from '../lib/LanguageContext';
 
@@ -36,11 +37,19 @@ const RecentPostsBlock: React.FC<Props> = ({ posts }) => {
             ? 'Some sites and services I recommend:'
             : 'Algunos sitios y servicios que recomiendo'}
         </h2>
-        <Advertisement
-          img={FriendsLibraryLogo.src}
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptate quas, vel ad perferendis quis quibusdam nisi est mollitia ea tempora."
-          url="https://friendslibrary.com"
-        />
+        {language === 'en' ? (
+          <Advertisement
+            img={FriendsLibraryLogo.src}
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptate quas, vel ad perferendis quis quibusdam nisi est mollitia ea tempora."
+            url="https://friendslibrary.com"
+          />
+        ) : (
+          <Advertisement
+            img={BibliotecaDeLosAmigosLogo.src}
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptate quas, vel ad perferendis quis quibusdam nisi est mollitia ea tempora."
+            url="https://bibliotecadelosamigos.com"
+          />
+        )}
         <Advertisement
           img={GertrudeLogo.src}
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptate quas, vel ad perferendis quis quibusdam nisi est mollitia ea tempora."

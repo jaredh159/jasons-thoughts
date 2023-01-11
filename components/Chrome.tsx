@@ -22,8 +22,13 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
   useEffect(() => {
     const detectedLang = localStorage.getItem('language');
     if (!detectedLang || (detectedLang !== 'en' && detectedLang !== 'es')) {
-      localStorage.setItem('language', 'en');
-      setLanguage('en');
+      if (window.navigator.language.startsWith('es')) {
+        localStorage.setItem('language', 'es');
+        setLanguage('es');
+      } else {
+        localStorage.setItem('language', 'en');
+        setLanguage('en');
+      }
     } else {
       localStorage.setItem('language', detectedLang);
       setLanguage(detectedLang);
@@ -86,13 +91,15 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
           <div className="w-96 h-96 bg-sky-500 rounded-2xl absolute -right-28 -bottom-96 rotate-45 bg-opacity-30"></div>
         </nav>
         <header className="flex flex-row-reverse md-lg:flex-row justify-between items-center py-5 px-5 sm:px-10 top-0 bg-white bg-opacity-20">
-          <Image
-            src={ProfilePic.src}
-            alt="photo of Jason Henderson"
-            width={70}
-            height={70}
-            className="w-12 h-12 rounded-full shadow-lg"
-          />
+          <div className="lg:w-[182px]">
+            <Image
+              src={ProfilePic.src}
+              alt="photo of Jason Henderson"
+              width={70}
+              height={70}
+              className="w-12 h-12 rounded-full shadow-lg"
+            />
+          </div>
           <button
             className="md-lg:hidden border-[0.5px] w-12 h-12 rounded-full shadow-lg flex justify-center items-center transition duration-100 hover:bg-sky-50 text-gray-400 hover:text-gray-500 text-lg"
             onClick={() => setNavOpen(true)}
@@ -101,7 +108,7 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
           </button>
           <FloatingNav page={page} language={language} />
           <LanguageToggler
-            className="hidden md-lg:flex"
+            className="hidden md-lg:flex w-[182px]"
             language={language}
             setLanguage={setLanguage}
             page={page}

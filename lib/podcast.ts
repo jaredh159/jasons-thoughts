@@ -3,6 +3,7 @@ import { Lang, Post } from './types';
 
 export function podcastXml(posts: Array<Post<Lang>>): string {
   const lang = posts[0]?.lang ?? `en`;
+  const url = process.env.DEPLOY_PRIME_URL ?? 'https://hender.blog';
   const description =
     lang === `en`
       ? `I write because I feel, and in order to be felt, and not for amusement. Remember, life is short, its business arduous, the prize immortal glory, the failure eternal misery.`
@@ -16,12 +17,12 @@ export function podcastXml(posts: Array<Post<Lang>>): string {
     xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
       <atom:link
-        href="${process.env.SITE}podcast.${lang}.rss"
+        href="${url}podcast.${lang}.rss"
         rel="self"
         type="application/rss+xml"
       />
       <title>hender.blog</title>
-      <link>${process.env.SITE}</link>
+      <link>${url}</link>
       <language>en</language>
       <itunes:author>Jason Henderson</itunes:author>
       <itunes:subtitle>${description}</itunes:subtitle>
@@ -37,7 +38,7 @@ export function podcastXml(posts: Array<Post<Lang>>): string {
       <image>
         <url>https://flp-assets.nyc3.digitaloceanspaces.com/static/henderblog.jpg</url>
         <title>hender.blog</title>
-        <link>${process.env.SITE}</link>
+        <link>${url}</link>
       </image>
       <itunes:category text="Religion &amp; Spirituality">
         <itunes:category text="Christianity" />
@@ -78,6 +79,7 @@ function cdata(text: string): string {
 
 function audioItemData(post: Post<any>): string {
   const summary = striptags(post.content).substring(0, 200);
+  const url = process.env.DEPLOY_PRIME_URL ?? 'https://hender.blog';
   return [
     `<title>${post.title}</title>`,
     `<enclosure url="${post.mp3Url}" length="${post.audioSize}" type="audio/mpeg" />`,
@@ -85,8 +87,8 @@ function audioItemData(post: Post<any>): string {
     `<itunes:subtitle>${cdata(summary)}</itunes:subtitle>`,
     `<itunes:summary>${cdata(summary)}</itunes:summary>`,
     `<description>${cdata(summary)}</description>`,
-    `<link>${process.env.SITE}posts/${post.slug}</link>`,
-    `<guid>${process.env.SITE}posts/${post.slug}</guid>`,
+    `<link>${url}posts/${post.slug}</link>`,
+    `<guid>${url}posts/${post.slug}</guid>`,
     `<pubDate>${post.publishedAt.toUTCString()}</pubDate>`,
     `<itunes:duration>${post.audioDuration}</itunes:duration>`,
     `<itunes:explicit>clean</itunes:explicit>`,

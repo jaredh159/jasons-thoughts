@@ -8,7 +8,6 @@ import Link from 'next/link';
 import LanguageToggler from './LanguageToggler';
 import { Lang } from '../lib/types';
 import { LanguageContext } from '../lib/LanguageContext';
-import { useRouter } from 'next/router';
 
 interface Props {
   page: string;
@@ -19,7 +18,6 @@ interface Props {
 const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
   const [navOpen, setNavOpen] = useState(false);
   const [language, setLanguage] = useState<Lang | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const detectedLang = localStorage.getItem('language');
@@ -45,14 +43,14 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
       <div className="flex flex-col min-h-screen relative">
         <div
           className={cx(
-            'z-40 bg-black left-0 top-0 w-screen h-screen sm:hidden bg-opacity-70 fixed',
+            'z-40 bg-black left-0 top-0 w-screen h-screen md-lg:hidden bg-opacity-70 fixed',
             navOpen ? 'block' : 'hidden',
           )}
           onClick={() => setNavOpen(false)}
         />
         <nav
           className={cx(
-            'fixed sm:hidden h-screen w-72 bg-white shadow-xl z-50 left-0 top-0 [transition:150ms] rounded-r-xl overflow-hidden',
+            'fixed md-lg:hidden h-screen w-72 bg-white shadow-xl z-50 left-0 top-0 [transition:150ms] rounded-r-xl overflow-hidden',
             navOpen ? 'ml-0' : '-ml-80',
           )}
         >
@@ -63,16 +61,31 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
             <i className="fa-solid fa-times text-2xl" />
           </button>
           <div className="p-6 mt-10 flex flex-col space-y-4">
-            <SidebarNavLink to="/">Home</SidebarNavLink>
-            <SidebarNavLink to="/posts">Posts</SidebarNavLink>
-            <SidebarNavLink to="/">Podcast</SidebarNavLink>
-            <SidebarNavLink to="/about">About</SidebarNavLink>
-            <SidebarNavLink to="/contact">Contact me</SidebarNavLink>
+            {language === 'en' ? (
+              <>
+                <SidebarNavLink to="/">Home</SidebarNavLink>
+                <SidebarNavLink to="/posts">Posts</SidebarNavLink>
+                <SidebarNavLink to="/en-podcast">Podcast</SidebarNavLink>
+                <SidebarNavLink to="/about">About</SidebarNavLink>
+                <SidebarNavLink to="/contact">Contact me</SidebarNavLink>
+              </>
+            ) : (
+              <>
+                <SidebarNavLink to="/">Home</SidebarNavLink>
+                <SidebarNavLink to="/publicaciones">Publicaciones</SidebarNavLink>
+                <SidebarNavLink to="/es-podcast">Podcast</SidebarNavLink>
+                <SidebarNavLink to="/acerca-de-mi">Acerca de mí</SidebarNavLink>
+                <SidebarNavLink to="/contacto">Contacto</SidebarNavLink>
+              </>
+            )}
+          </div>
+          <div className="flex justify-center items-center mt-8">
+            <LanguageToggler language={language} setLanguage={setLanguage} page={page} />
           </div>
           <div className="w-96 h-96 bg-sky-300 rounded-2xl absolute right-8 -bottom-72 rotate-45 bg-opacity-30"></div>
           <div className="w-96 h-96 bg-sky-500 rounded-2xl absolute -right-28 -bottom-96 rotate-45 bg-opacity-30"></div>
         </nav>
-        <header className="flex flex-row-reverse sm:flex-row justify-between items-center py-5 px-5 sm:px-10 top-0 bg-white bg-opacity-20">
+        <header className="flex flex-row-reverse md-lg:flex-row justify-between items-center py-5 px-5 sm:px-10 top-0 bg-white bg-opacity-20">
           <Image
             src={ProfilePic.src}
             alt="photo of Jason Henderson"
@@ -81,43 +94,17 @@ const Chrome: React.FC<Props> = ({ page, smallFooter, children }) => {
             className="w-12 h-12 rounded-full shadow-lg"
           />
           <button
-            className="sm:hidden border-[0.5px] w-12 h-12 rounded-full shadow-lg flex justify-center items-center transition duration-100 hover:bg-sky-50 text-gray-400 hover:text-gray-500 text-lg"
+            className="md-lg:hidden border-[0.5px] w-12 h-12 rounded-full shadow-lg flex justify-center items-center transition duration-100 hover:bg-sky-50 text-gray-400 hover:text-gray-500 text-lg"
             onClick={() => setNavOpen(true)}
           >
             <i className="fa-solid fa-bars" />
           </button>
           <FloatingNav page={page} language={language} />
           <LanguageToggler
+            className="hidden md-lg:flex"
             language={language}
-            onClick={() => {
-              if (language === 'en') {
-                setLanguage('es');
-                localStorage.setItem('language', 'es');
-              } else {
-                setLanguage('en');
-                localStorage.setItem('language', 'en');
-              }
-              switch (page) {
-                case '/posts':
-                  router.push('/publicaciones');
-                  break;
-                case '/publicaciones':
-                  router.push('/posts');
-                  break;
-                case '/contact':
-                  router.push('/contacto');
-                  break;
-                case '/contacto':
-                  router.push('/contact');
-                  break;
-                case '/about':
-                  router.push('/acerca-de-mi');
-                  break;
-                case '/acerca-de-mi':
-                  router.push('/about');
-                  break;
-              }
-            }}
+            setLanguage={setLanguage}
+            page={page}
           />
         </header>
         <section className="flex-grow flex flex-col">{children}</section>

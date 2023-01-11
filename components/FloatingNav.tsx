@@ -11,7 +11,7 @@ interface Props {
 
 const FloatingNav: React.FC<Props> = ({ page, className, language }) => {
   return (
-    <div className="hidden sm:block">
+    <div className="hidden md-lg:block">
       <nav
         className={cx(
           `border-[0.5px] shadow-lg rounded-full py-1 px-8 bg-white relative z-20 flex flex-wrap justify-center`,

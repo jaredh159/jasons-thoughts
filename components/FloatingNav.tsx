@@ -1,13 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
 import NavLink from './NavLink';
+import { Lang } from '../lib/types';
 
 interface Props {
   page: string;
   className?: string;
+  language: Lang;
 }
 
-const FloatingNav: React.FC<Props> = ({ page, className }) => {
+const FloatingNav: React.FC<Props> = ({ page, className, language }) => {
   return (
     <div className="hidden sm:block">
       <nav
@@ -16,21 +18,43 @@ const FloatingNav: React.FC<Props> = ({ page, className }) => {
           className,
         )}
       >
-        <NavLink to="/" selected={page === '/'}>
-          Home
-        </NavLink>
-        <NavLink to="/posts" selected={page === '/posts'}>
-          Posts
-        </NavLink>
-        <NavLink to="/podcast" selected={page === '/podcast'}>
-          Podcast
-        </NavLink>
-        <NavLink to="/about" selected={page === '/about'}>
-          About me
-        </NavLink>
-        <NavLink to="/contact" selected={page === '/contact'}>
-          Contact
-        </NavLink>
+        {language === 'en' ? (
+          <>
+            <NavLink to="/" selected={page === '/'}>
+              Home
+            </NavLink>
+            <NavLink to="/posts" selected={page === '/posts'}>
+              Posts
+            </NavLink>
+            <NavLink to="/en-podcast" selected={page === '/en-podcast'}>
+              Podcast
+            </NavLink>
+            <NavLink to="/about" selected={page === '/about'}>
+              About me
+            </NavLink>
+            <NavLink to="/contact" selected={page === '/contact'}>
+              Contact
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink to="/" selected={page === '/'}>
+              Home
+            </NavLink>
+            <NavLink to="/publicaciones" selected={page === '/publicaciones'}>
+              Publicaciones
+            </NavLink>
+            <NavLink to="/es-podcast" selected={page === '/es-podcast'}>
+              Podcast
+            </NavLink>
+            <NavLink to="/acerca-de-mi" selected={page === '/acerca-de-mi'}>
+              Acerca de mi
+            </NavLink>
+            <NavLink to="/contacto" selected={page === '/contacto'}>
+              Contacto
+            </NavLink>
+          </>
+        )}
       </nav>
     </div>
   );

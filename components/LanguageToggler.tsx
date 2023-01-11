@@ -9,7 +9,10 @@ interface Props {
 
 const LanguageToggler: React.FC<Props> = ({ language, onClick }) => {
   return (
-    <button className="flex justify-center items-center space-x-1 bg-gray-100 shadow-inner rounded-xl">
+    <button
+      className="flex justify-center items-center space-x-1 bg-gray-100 shadow-inner rounded-xl"
+      onClick={onClick}
+    >
       <span
         className={cx(
           'py-2 px-4 text-gray-500',

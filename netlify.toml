@@ -1,0 +1,9 @@
+[[redirects]]
+from = "/podcast.en.rss"
+to = "https://hender.blog/podcast.en.rss"
+status = 301
+
+[[redirects]]
+from = "/podcast.es.rss"
+to = "https://hender.blog/podcast.es.rss"
+status = 301
